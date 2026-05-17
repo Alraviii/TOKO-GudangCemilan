@@ -1,0 +1,359 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard Admin Interaktif | GudangCemilan</title>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.0/font/bootstrap-icons.css">
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+    <style>
+    /* MENYESUAIKAN PALET WARNA BERDASARKAN SCREENSHOT */
+    :root {
+        --primary-dark: #111827;    /* Hitam kebiruan / Navy gelap untuk teks utama & sidebar */
+        --accent-brand: #f25c05;    /* Oranye khas GudangCemilan */
+        --accent-secondary: #1e2640;/* Biru gelap pekat */
+        --bg-workspace: #f9fafb;    /* Latar belakang bersih */
+        --card-border: #f3f4f6;
+    }
+    
+    body {
+        font-family: 'Plus Jakarta Sans', sans-serif;
+        background-color: var(--bg-workspace);
+        color: var(--primary-dark);
+    }
+
+    .wrapper {
+        display: flex;
+        width: 100%;
+    }
+
+    /* === PERBAIKAN SIDEBAR & HOVER MENU === */
+    #sidebar {
+        min-width: 260px;
+        max-width: 260px;
+        background: var(--primary-dark);
+        color: #fff;
+        min-height: 100vh;
+        padding: 0 12px; /* Memberikan ruang di sisi kanan-kiri untuk efek melengkung */
+    }
+
+    #sidebar .sidebar-header {
+        padding: 25px 8px;
+        border-bottom: 1px solid #1f2937;
+        margin-bottom: 15px;
+    }
+
+    #sidebar ul li {
+        margin-bottom: 5px; /* Memberi jarak antar menu */
+    }
+
+    #sidebar ul li a {
+        padding: 12px 16px;
+        display: flex;
+        align-items: center;
+        color: #9ca3af; /* Warna abu-abu soft saat tidak aktif */
+        text-decoration: none;
+        font-weight: 500;
+        border-radius: 8px; /* Sudut melengkung modern */
+        transition: all 0.25s ease-in-out; /* Efek transisi halus saat di-hover */
+    }
+
+    /* Hover & Aktif untuk menu Dashboard (Oranye sesuai screenshot) */
+    #sidebar ul li.active>a,
+    #sidebar ul li:not(.keluar-menu) a:hover {
+        color: #ffffff !important;
+        background-color: var(--accent-brand);
+    }
+
+    /* Styling khusus untuk menu Keluar agar kontras namun tetap rapi */
+    #sidebar ul li.keluar-menu a {
+        color: #fca5a5; /* Warna merah pastel agar tidak terlalu menusuk mata */
+    }
+
+    /* Hover khusus untuk menu Keluar (Merah elegan) */
+    #sidebar ul li.keluar-menu a:hover {
+        color: #ffffff !important;
+        background-color: #dc2626; /* Merah tegas saat di-hover */
+    }
+
+    /* Jarak ikon di dalam menu */
+    #sidebar ul li a i {
+        font-size: 1.1rem;
+        margin-right: 12px;
+    }
+    /* ===================================== */
+
+    #content {
+        width: 100%;
+        padding: 30px;
+    }
+
+    .navbar-custom {
+        background: #ffffff;
+        padding: 15px 25px;
+        border-radius: 12px;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.02);
+        margin-bottom: 30px;
+        border: 1px solid var(--card-border);
+    }
+
+    .stat-card {
+        background: #ffffff;
+        border: 1px solid var(--card-border);
+        border-radius: 12px;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.02);
+    }
+
+    .icon-box {
+        width: 48px;
+        height: 48px;
+        border-radius: 10px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 24px;
+    }
+
+    .chart-container {
+        background: #ffffff;
+        border-radius: 12px;
+        padding: 20px;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.02);
+        margin-bottom: 30px;
+        border: 1px solid var(--card-border);
+    }
+
+    .img-preview-table {
+        width: 50px;
+        height: 50px;
+        object-fit: cover;
+        border-radius: 8px;
+        border: 1px solid #e5e7eb;
+    }
+
+    .btn-primary {
+        background-color: var(--accent-brand) !important;
+        border-color: var(--accent-brand) !important;
+    }
+    .btn-primary:hover {
+        background-color: #d94e04 !important;
+        border-color: #d94e04 !important;
+    }
+    
+    .btn-secondary, .btn-dark {
+        background-color: var(--accent-secondary) !important;
+        border-color: var(--accent-secondary) !important;
+    }
+    
+    .text-brand {
+        color: var(--accent-brand) !important;
+    }
+</style>
+</head>
+
+<body>
+
+    <div class="wrapper">
+        <nav id="sidebar">
+            <div class="sidebar-header d-flex align-items-center">
+                <i class="bi bi-bag-heart-fill text-brand fs-3 me-2"></i>
+                <h5 class="m-0 fw-bold text-white">Gudang<span class="text-brand">Cemilan</span></h5>
+            </div>
+            <ul class="list-unstyled p-2">
+                <li class="active"><a href="landingpage.html"><i class="bi bi-speedometer2 me-2"></i>Dashboard</a></li>
+                <li><a href="index.html" class="text-danger"><i class="bi bi-box-arrow-left me-2"></i>Keluar</a></li>
+            </ul>
+        </nav>
+
+        <main id="content">
+            <header class="navbar-custom d-flex justify-content-between align-items-center">
+                <div>
+                    <h5 class="m-0 fw-bold">Manajemen Toko</h5>
+                    <p class="text-muted small m-0">Kelola omset dan analisis produk GudangCemilan Anda</p>
+                </div>
+                <div class="fw-medium small">Status: <span class="badge bg-success">Admin</span></div>
+            </header>
+
+            <section class="row g-4 mb-4">
+                <div class="col-12 col-md-6">
+                    <div class="card stat-card p-4">
+                        <div class="d-flex align-items-center justify-content-between">
+                            <div>
+                                <p class="text-muted small mb-1 fw-medium">Estimasi Omset</p>
+                                <h3 class="fw-bold m-0 text-success" id="totalOmset">Rp 0</h3>
+                            </div>
+                            <div class="icon-box bg-success-subtle text-success">
+                                <i class="bi bi-graph-up-arrow"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-12 col-md-6">
+                    <div class="card stat-card p-4">
+                        <div class="d-flex align-items-center justify-content-between">
+                            <div>
+                                <p class="text-muted small mb-1 fw-medium">Jumlah Macam Produk</p>
+                                <h3 class="fw-bold m-0 text-brand" id="jumlahProduk">0</h3>
+                            </div>
+                            <div class="icon-box bg-warning-subtle text-brand">
+                                <i class="bi bi-box-seam"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section class="row g-4 mb-4">
+                <div class="col-12 col-lg-8">
+                    <div class="chart-container">
+                        <h6 class="fw-bold text-dark mb-3"><i
+                                class="bi bi-bar-chart-fill text-brand me-2"></i>Performa Unit Terjual</h6>
+                        <div style="position: relative; height:250px;">
+                            <canvas id="barChart"></canvas>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-12 col-lg-4">
+                    <div class="chart-container">
+                        <h6 class="fw-bold text-dark mb-3"><i class="bi bi-pie-chart-fill text-warning me-2"></i>Porsi
+                            Kategori Produk</h6>
+                        <div style="position: relative; height:250px; display: flex; justify-content: center;">
+                            <canvas id="pieChart"></canvas>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <div class="d-flex justify-content-between align-items-center mb-3">
+                <h5 class="fw-bold m-0">Daftar Produk</h5>
+                <button class="btn btn-primary fw-medium" data-bs-toggle="modal" data-bs-target="#modalTambah">
+                    <i class="bi bi-plus-lg me-2"></i>Tambah Produk Baru
+                </button>
+            </div>
+
+            <section class="card border-0 shadow-sm p-4" style="border-radius: 12px;">
+                <div class="table-responsive">
+                    <table class="table table-hover align-middle mb-0">
+                        <thead class="table-light">
+                            <tr>
+                                <th style="width: 80px;">Foto</th>
+                                <th>Nama Produk</th>
+                                <th>Kategori</th>
+                                <th>Harga Unit</th>
+                                <th>Total Terjual</th>
+                                <th class="text-center" style="width: 200px;">Aksi</th>
+                            </tr>
+                        </thead>
+                        <tbody id="tabelProduk">
+                            </tbody>
+                    </table>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <div class="modal fade" id="modalTambah" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content" style="border-radius: 14px;">
+                <div class="modal-header">
+                    <h5 class="modal-title fw-bold">Form Tambah Produk</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
+                <form id="formTambahProduk">
+                    <div class="modal-body">
+                        <div class="mb-3">
+                            <label class="form-label small fw-medium text-muted">Nama Produk</label>
+                            <input type="text" id="inputNama" class="form-control" placeholder="Contoh: Cireng Bumbu"
+                                required>
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label small fw-medium text-muted">Kategori</label>
+                            <select id="inputKategori" class="form-select" required>
+                                <option value="Aci-Acian">Aci-Acian</option>
+                                <option value="Makanan Basah">Makanan Basah</option>
+                                <option value="Gorengan">Gorengan</option>
+                                <option value="Lainnya">Lainnya</option>
+                            </select>
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label small fw-medium text-muted">Harga Satuan (Rp)</label>
+                            <input type="number" id="inputHarga" class="form-control" placeholder="Contoh: 15000"
+                                required>
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label small fw-medium text-muted">Simulasi Jumlah Terjual</label>
+                            <input type="number" id="inputTerjual" class="form-control" placeholder="Contoh: 10"
+                                required>
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label small fw-medium text-muted">Upload Foto Produk</label>
+                            <input type="file" id="inputGambarFile" class="form-control" accept="image/*">
+                            <div class="form-text text-muted" style="font-size: 11px;">Pilih file gambar langsung dari
+                                komputer/HP Anda.</div>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-light" data-bs-dismiss="modal">Batal</button>
+                        <button type="submit" class="btn btn-primary">Simpan ke Tabel</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="modalEdit" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content" style="border-radius: 14px;">
+                <div class="modal-header">
+                    <h5 class="modal-title fw-bold">Form Edit Produk</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
+                <form id="formEditProduk">
+                    <input type="hidden" id="editProdukId">
+                    <div class="modal-body">
+                        <div class="mb-3">
+                            <label class="form-label small fw-medium text-muted">Nama Produk</label>
+                            <input type="text" id="editNama" class="form-control" required>
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label small fw-medium text-muted">Kategori</label>
+                            <select id="editKategori" class="form-select" required>
+                                <option value="Aci-Acian">Aci-Acian</option>
+                                <option value="Makanan Basah">Makanan Basah</option>
+                                <option value="Gorengan">Gorengan</option>
+                                <option value="Lainnya">Lainnya</option>
+                            </select>
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label small fw-medium text-muted">Harga Satuan (Rp)</label>
+                            <input type="number" id="editHarga" class="form-control" required>
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label small fw-medium text-muted">Jumlah Terjual</label>
+                            <input type="number" id="editTerjual" class="form-control" required>
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label small fw-medium text-muted">Ubah Foto Produk (Biarkan kosong jika
+                                tidak ingin mengubah)</label>
+                            <input type="file" id="editGambarFile" class="form-control" accept="image/*">
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-light" data-bs-dismiss="modal">Batal</button>
+                        <button type="submit" class="btn btn-success">Simpan Perubahan</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="js/dashboard.js"></script>
+</body>
+
+</html>
