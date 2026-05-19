@@ -2,8 +2,12 @@ document.addEventListener("DOMContentLoaded", function () {
     
     // === 1. INISIALISASI AKUN DEFAULT UTK KULINER BANDUNG (Disimpan di LocalStorage) ===
     if (!localStorage.getItem("user_email")) {
-        localStorage.setItem("user_email", "pelanggan@gudangcemilan.com");
+        localStorage.setItem("user_email", "user@gmail.com");
         localStorage.setItem("user_password", "user123");
+    }
+    // Menambahkan nama default pelanggan agar jika belum mendaftar tetap ada namanya
+    if (!localStorage.getItem("user_nama")) {
+        localStorage.setItem("user_nama", "Pelanggan");
     }
     if (!localStorage.getItem("admin_username")) {
         localStorage.setItem("admin_username", "admin");
@@ -29,8 +33,13 @@ document.addEventListener("DOMContentLoaded", function () {
 
             const validEmail = localStorage.getItem("user_email");
             const validPassword = localStorage.getItem("user_password");
+            const validNama = localStorage.getItem("user_nama");
 
             if (inputEmail === validEmail && inputPassword === validPassword) {
+                // KUNCI UTAMA: Simpan status login dan nama user sebelum pindah halaman
+                localStorage.setItem("is_logged_in", "true");
+                localStorage.setItem("nama_user", validNama);
+
                 alert("Login Pelanggan Berhasil! Selamat Datang di GudangCemilan...");
                 window.location.href = "landingpage.html"; 
             } else {
@@ -81,6 +90,10 @@ document.addEventListener("DOMContentLoaded", function () {
             const validPassword = localStorage.getItem("admin_password");
 
             if (inputUsername === validUsername && inputPassword === validPassword) {
+                // KUNCI UTAMA ADMIN: Simpan status login admin
+                localStorage.setItem("is_logged_in", "true");
+                localStorage.setItem("nama_user", "Admin");
+
                 alert("Login Admin Berhasil! Masuk ke Dashboard Manajemen...");
                 window.location.href = "dashboard-admin.html"; 
             } else {
@@ -102,6 +115,7 @@ document.addEventListener("DOMContentLoaded", function () {
             const passwordBaru = document.getElementById("regPassword").value;
 
             // Menyimpan akun hasil pendaftaran ke localStorage (Menimpa Akun Default)
+            localStorage.setItem("user_nama", namaBaru); // Menyimpan nama asli pendaftar
             localStorage.setItem("user_email", emailBaru);
             localStorage.setItem("user_password", passwordBaru);
 
