@@ -1,0 +1,299 @@
+        :root {
+            --accent-brand: #f25c05;
+            /* Oranye khas GudangCemilan */
+            --primary-dark: #111827;
+            /* Hitam kebiruan pekat */
+            --bg-workspace: #f8fafc;
+            /* Latar belakang halaman utama */
+            --card-border: #f1f5f9;
+        }
+
+        body {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            background-color: var(--bg-workspace);
+            color: #334155;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        /* === 2. KUSTOMISASI TOMBOL BULAT DAN TEKS DI NAVBAR === */
+        .nav-action-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-decoration: none;
+            color: var(--primary-dark) !important;
+            transition: all 0.2s ease-in-out;
+        }
+
+        .nav-icon-circle {
+            width: 42px;
+            height: 42px;
+            border: 1.5px solid #e5e7eb;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            background-color: #ffffff;
+            transition: all 0.2s ease-in-out;
+        }
+
+        .nav-action-text {
+            font-size: 0.7rem;
+            font-weight: 600;
+            margin-top: 5px;
+            color: #6b7280;
+            text-transform: uppercase;
+            letter-spacing: 0.3px;
+            transition: all 0.2s ease-in-out;
+        }
+
+        /* Efek Hover Lingkaran */
+        .nav-action-item:hover .nav-icon-circle {
+            border-color: var(--accent-brand);
+            background-color: #fff3eb;
+            color: var(--accent-brand) !important;
+            transform: translateY(-2px);
+        }
+
+        .nav-action-item:hover .nav-action-text {
+            color: var(--accent-brand);
+        }
+
+        /* Posisi badge angka di keranjang */
+        .nav-icon-circle #cart-badge {
+            top: 4px !important;
+            left: 82% !important;
+            padding: 3px 5px !important;
+            font-size: 0.6rem !important;
+        }
+
+        /* === 3. CSS UTK POP-UP KERANJANG DI TENGAH === */
+        .cart-item {
+            background-color: #ffffff;
+            border: 1px solid #f3f4f6;
+            border-radius: 12px;
+            padding: 14px 16px;
+            margin-bottom: 12px;
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+
+        .cart-item:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.04);
+        }
+
+        .cart-item-title {
+            font-size: 0.95rem;
+            font-weight: 700;
+            color: var(--primary-dark);
+        }
+
+        .cart-item-price {
+            font-size: 0.85rem;
+            font-weight: 600;
+            color: var(--accent-brand);
+        }
+
+        #list-item-keranjang::-webkit-scrollbar {
+            width: 6px;
+        }
+
+        #list-item-keranjang::-webkit-scrollbar-track {
+            background: #f1f1f1;
+            border-radius: 10px;
+        }
+
+        #list-item-keranjang::-webkit-scrollbar-thumb {
+            background: #cbd5e1;
+            border-radius: 10px;
+        }
+
+        /* BADGE KATEGORI */
+        .category-badge {
+            font-size: 0.72rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.75px;
+            color: #94a3b8;
+        }
+
+        /* === 4. LAYOUT & DESAIN PREMIUM === */
+        .navbar {
+            backdrop-filter: blur(12px);
+            background-color: rgba(255, 255, 255, 0.85) !important;
+            border-bottom: 1px solid #e2e8f0;
+            padding: 18px 0;
+        }
+
+        .navbar-brand {
+            font-weight: 800;
+            letter-spacing: -0.75px;
+            font-size: 1.45rem;
+            color: var(--primary-dark) !important;
+        }
+
+        .nav-link {
+            font-weight: 500;
+            color: #64748b !important;
+            padding: 10px 16px !important;
+            transition: color 0.25s ease;
+        }
+
+        .nav-link:hover,
+        .nav-link.active {
+            color: var(--accent-brand) !important;
+        }
+
+        @media (max-width: 991.98px) {
+            .navbar-collapse {
+                margin-top: 15px;
+                padding-top: 10px;
+                border-top: 1px solid #f1f5f9;
+            }
+
+            .nav-link {
+                padding: 12px 8px !important;
+            }
+
+            .mobile-user-actions {
+                padding-top: 15px;
+                margin-top: 10px;
+                border-top: 1px solid #f1f5f9;
+                width: 100%;
+                justify-content: center;
+            }
+        }
+
+        .hero-section {
+            background: radial-gradient(circle at 85% 30%, rgba(234, 88, 12, 0.05) 0%, transparent 60%),
+                radial-gradient(circle at 15% 75%, rgba(245, 158, 11, 0.04) 0%, transparent 50%),
+                #ffffff;
+            border-bottom: 1px solid #e2e8f0;
+            padding: 100px 0;
+            position: relative;
+        }
+
+        .hero-badge {
+            background-color: rgba(234, 88, 12, 0.08);
+            color: var(--accent-brand);
+            padding: 6px 16px;
+            border-radius: 50px;
+            font-size: 0.8rem;
+            font-weight: 700;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .feature-box {
+            background: #ffffff;
+            border: 1px solid var(--card-border);
+            border-radius: 16px;
+            padding: 24px;
+            transition: transform 0.3s ease;
+        }
+
+        .feature-box:hover {
+            transform: translateY(-3px);
+        }
+
+        .feature-icon-wrapper {
+            width: 48px;
+            height: 48px;
+            background-color: rgba(234, 88, 12, 0.08);
+            color: var(--accent-brand);
+            border-radius: 12px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .product-card {
+            border: none;
+            background: #ffffff;
+            border-radius: 20px;
+            overflow: hidden;
+            transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+            border: 1px solid var(--card-border);
+        }
+
+        .product-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 40px rgba(15, 23, 42, 0.06);
+            border-color: #e2e8f0;
+        }
+
+        .img-container {
+            position: relative;
+            background-color: #f8fafc;
+            overflow: hidden;
+            padding-top: 100%;
+        }
+
+        .product-img {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .product-card:hover .product-img {
+            transform: scale(1.05);
+        }
+
+        .product-title {
+            font-size: 0.95rem;
+            font-weight: 600;
+            color: var(--primary-dark);
+            line-height: 1.4;
+            height: 2.8em;
+            display: -webkit-box;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+        }
+
+        .product-price {
+            font-size: 1.1rem;
+            font-weight: 700;
+            color: var(--accent-brand);
+        }
+
+        .btn-buy {
+            background-color: var(--primary-dark);
+            color: #ffffff;
+            border: none;
+            border-radius: 12px;
+            padding: 11px;
+            font-weight: 600;
+            font-size: 0.85rem;
+            transition: all 0.2s ease;
+        }
+
+        .btn-buy:hover {
+            background-color: var(--accent-brand);
+            color: #ffffff;
+        }
+
+        /* === 5. DESAIN FOOTER PREMIUM (Kustomisasi Warna Diperbaiki Di Sini) === */
+        .kustom-footer {
+            background-color: #1e2640 !important;
+            /* Warna abu-abu terang dikunci di sini */
+            border-top: 1px solid #e2e8f0;
+            display: block;
+            width: 100%;
+        }
+
+        .kustom-footer h4 {
+            color: var(--primary-dark);
+            font-weight: 800;
+            letter-spacing: -0.5px;
+        }
+
+        .kustom-footer p,
+        .kustom-footer a {
+            color: #64748b !important;
+        }

@@ -1,0 +1,140 @@
+    :root {
+        --primary-dark: #111827;    /* Hitam kebiruan / Navy gelap untuk teks utama & sidebar */
+        --accent-brand: #f25c05;    /* Oranye khas GudangCemilan */
+        --accent-secondary: #1e2640;/* Biru gelap pekat */
+        --bg-workspace: #f9fafb;    /* Latar belakang bersih */
+        --card-border: #f3f4f6;
+    }
+    
+    body {
+        font-family: 'Plus Jakarta Sans', sans-serif;
+        background-color: var(--bg-workspace);
+        color: var(--primary-dark);
+    }
+
+    .wrapper {
+        display: flex;
+        width: 100%;
+    }
+
+    /* === PERBAIKAN SIDEBAR & HOVER MENU === */
+    #sidebar {
+        min-width: 260px;
+        max-width: 260px;
+        background: var(--primary-dark);
+        color: #fff;
+        min-height: 100vh;
+        padding: 0 12px; /* Memberikan ruang di sisi kanan-kiri untuk efek melengkung */
+    }
+
+    #sidebar .sidebar-header {
+        padding: 25px 8px;
+        border-bottom: 1px solid #1f2937;
+        margin-bottom: 15px;
+    }
+
+    #sidebar ul li {
+        margin-bottom: 5px; /* Memberi jarak antar menu */
+    }
+
+    #sidebar ul li a {
+        padding: 12px 16px;
+        display: flex;
+        align-items: center;
+        color: #9ca3af; /* Warna abu-abu soft saat tidak aktif */
+        text-decoration: none;
+        font-weight: 500;
+        border-radius: 8px; /* Sudut melengkung modern */
+        transition: all 0.25s ease-in-out; /* Efek transisi halus saat di-hover */
+    }
+
+    /* Hover & Aktif untuk menu Dashboard (Oranye sesuai screenshot) */
+    #sidebar ul li.active>a,
+    #sidebar ul li:not(.keluar-menu) a:hover {
+        color: #ffffff !important;
+        background-color: var(--accent-brand);
+    }
+
+    /* Styling khusus untuk menu Keluar agar kontras namun tetap rapi */
+    #sidebar ul li.keluar-menu a {
+        color: #fca5a5; /* Warna merah pastel agar tidak terlalu menusuk mata */
+    }
+
+    /* Hover khusus untuk menu Keluar (Merah elegan) */
+    #sidebar ul li.keluar-menu a:hover {
+        color: #ffffff !important;
+        background-color: #dc2626; /* Merah tegas saat di-hover */
+    }
+
+    /* Jarak ikon di dalam menu */
+    #sidebar ul li a i {
+        font-size: 1.1rem;
+        margin-right: 12px;
+    }
+    /* ===================================== */
+
+    #content {
+        width: 100%;
+        padding: 30px;
+    }
+
+    .navbar-custom {
+        background: #ffffff;
+        padding: 15px 25px;
+        border-radius: 12px;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.02);
+        margin-bottom: 30px;
+        border: 1px solid var(--card-border);
+    }
+
+    .stat-card {
+        background: #ffffff;
+        border: 1px solid var(--card-border);
+        border-radius: 12px;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.02);
+    }
+
+    .icon-box {
+        width: 48px;
+        height: 48px;
+        border-radius: 10px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 24px;
+    }
+
+    .chart-container {
+        background: #ffffff;
+        border-radius: 12px;
+        padding: 20px;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.02);
+        margin-bottom: 30px;
+        border: 1px solid var(--card-border);
+    }
+
+    .img-preview-table {
+        width: 50px;
+        height: 50px;
+        object-fit: cover;
+        border-radius: 8px;
+        border: 1px solid #e5e7eb;
+    }
+
+    .btn-primary {
+        background-color: var(--accent-brand) !important;
+        border-color: var(--accent-brand) !important;
+    }
+    .btn-primary:hover {
+        background-color: #d94e04 !important;
+        border-color: #d94e04 !important;
+    }
+    
+    .btn-secondary, .btn-dark {
+        background-color: var(--accent-secondary) !important;
+        border-color: var(--accent-secondary) !important;
+    }
+    
+    .text-brand {
+        color: var(--accent-brand) !important;
+    }
